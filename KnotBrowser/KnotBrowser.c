@@ -36,8 +36,8 @@ float matAmbient[] = { 0.5f, 0.0f, 0.0f, 1.0f };
 float matDiffuse[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 
 /* to load meshes and models */
-GLuint Mesh = 3;
-GLuint newMesh = 3;
+GLuint Mesh = 0;
+GLuint newMesh = 0;
 
 GLuint Model = 2;
 GLuint newModel = 2;
@@ -327,9 +327,9 @@ int main(int argc, char **argv) {
 	TwBar* bar = TwNewBar("Knot Browser");
 
 	// Array of drop down items
-	TwEnumVal Meshes[] = { {0, "Polygon"}, {1, "Points"}, {2, "Lines"}, {3, "Triangles"} };
+	TwEnumVal Meshes[] = { {0, "Polygon"}, {1, "Points"}, {2, "Lines"} };
 	// ATB identifier for the array
-	TwType MeshTwType = TwDefineEnum("MeshType", Meshes, 4);
+	TwType MeshTwType = TwDefineEnum("MeshType", Meshes, 3);
 
 	// Array of drop down items
 	TwEnumVal Models[] = { {0, "Lina 1"}, {1, "Lina 2"}, {2, "Osemka"}, {3, "Szrotowy"}, {4, "Plaski"}, {5, "Rzutkowy"}, {6, "Wyblinka"} };
@@ -343,7 +343,7 @@ int main(int argc, char **argv) {
 
 	TwAddVarRW(bar, "Zoom", TW_TYPE_FLOAT, &zoom, " min=0.01 max=2.5 step=0.01");
 	TwAddVarRW(bar, "Multiplier", TW_TYPE_FLOAT, &lightMultiplier, " label='Light booster' min=0.1 max=4 step=0.02 ");
-	TwAddVarRW(bar, "Rotation Speed", TW_TYPE_FLOAT, &rotationSpeed, " min=0 max=5 step=0.05 keyIncr=+ keyDecr=- help='Rotation speed (turns/second)' ");
+	TwAddVarRW(bar, "Rotation Speed", TW_TYPE_FLOAT, &rotationSpeed, " min=0 max=5 step=0.01 keyIncr=+ keyDecr=- help='Rotation speed (turns/second)' ");
 	TwAddButton(bar, "AutoRotate", AutoRotateCB, NULL, " label='Auto rotate' ");
 	TwAddSeparator(bar, "", NULL);
 
